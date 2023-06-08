@@ -91,8 +91,12 @@ def click(container_width,height,scale,radius_width,show_mask,model,im):
             if rerun:
                 st.experimental_rerun()
         im_bytes = BytesIO()
+        mask_bytes = BytesIO()
         st.session_state['im'].save(im_bytes,format='PNG')
+        im_masked.save(mask_bytes, format="PNG")
         st.download_button('Download image',data=im_bytes.getvalue(),file_name='seg.png')
+        st.download_button('Download mask',data=mask_bytes.getvalue(),file_name='mask.png')
+
 
 def box(container_width,height,scale,radius_width,show_mask,model,im):
     for each in ['color_change_point','input_masks_color']:
@@ -173,8 +177,12 @@ def box(container_width,height,scale,radius_width,show_mask,model,im):
             if rerun:
                 st.experimental_rerun()
             im_bytes = BytesIO()
+            mask_bytes = BytesIO()
             st.session_state['im'].save(im_bytes,format='PNG')
+            st.session_state['mask'].save(mask_bytes,format='PNG')
             st.download_button('Download image',data=im_bytes.getvalue(),file_name='seg.png')
+            st.write("ho")
+            st.download_button('Download mask',data=mask_bytes.getvalue(),file_name='mask.png')
 
 def everthing(im,show_mask,model):
     st.session_state.clear()

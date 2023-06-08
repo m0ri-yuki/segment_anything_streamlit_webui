@@ -15,7 +15,7 @@ Install our version，make sure you have installed npm
 cd streamlit_dc/streamlit_drawable_canvas/frontend
 npm install
 npm run build
-cd streamlit_dc/
+cd ../../
 pip install -e .
 cd ../
 ```
